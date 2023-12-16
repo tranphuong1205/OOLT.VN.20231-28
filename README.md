@@ -1,1 +1,2 @@
-﻿# OOLT.VN.20231-28
+Trần Thị Phương & Dương Đăng Quang: Class Diagram
+Lương Phúc Quang & Đỗ Hồng Quân: UseCase Diagram
