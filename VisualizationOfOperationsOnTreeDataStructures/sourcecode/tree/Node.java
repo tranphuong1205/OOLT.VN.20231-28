@@ -1,18 +1,32 @@
 package tree;
 
 public class Node {
-	private int nodeValue;
+	private int value;
+	private Node left;
+	private Node right;
 	
 	public Node(int x) {
-		this.nodeValue = x;
+		this.value = x;
+		this.left = null;
+		this.right = null;
 	}
-
+	
 	public int getNodeValue() {
-		return nodeValue;
+		return value;
 	}
-
-	public void setNodeValue(int nodeValue) {
-		this.nodeValue = nodeValue;
+	public Node getLeft() {
+		return this.left;
 	}
+	public Node getRight() {
+		return this.right;
+	}
+	public boolean lessThan(Node node) {
+		return this.getNodeValue() <= node.getNodeValue();
+	}
+	public boolean greaterThan(Node node) {
+		return this.getNodeValue() > node.getNodeValue();
+		
+}
+	
 	
 }
