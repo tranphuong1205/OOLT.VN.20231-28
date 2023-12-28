@@ -15,10 +15,19 @@ public class Node {
 		return value;
 	}
 	public Node getLeft() {
-		return this.left;
+		return left;
 	}
 	public Node getRight() {
-		return this.right;
+		return right;
+	}
+	public void setValue(int x) {
+		this.value = x;
+	}
+	public void setLeft(Node node) {
+		this.left = node;
+	}
+	public void setRight(Node node) {
+		this.right = node;
 	}
 	public boolean lessThan(Node node) {
 		return this.getNodeValue() <= node.getNodeValue();
