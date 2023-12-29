@@ -1,0 +1,7 @@
+package algorithm;
+
+import tree.Node;
+
+interface  Algorithm {
+	void traverse(Node root);
+}

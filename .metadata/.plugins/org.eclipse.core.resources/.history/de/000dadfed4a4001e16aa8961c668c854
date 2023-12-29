@@ -1,0 +1,16 @@
+package tree;
+
+public abstract class Tree {
+	private Node root;
+	public Tree() {
+		this.root = null;
+	}
+	public abstract void create();
+	public abstract Node insert( int  parentNodeValue, int  newNodeValue);
+	public abstract void delete(int  nodeValue);
+	public abstract void update(int currValue, int newValue);
+	public void traverse(String algorithm) {
+		
+	}
+	}
+

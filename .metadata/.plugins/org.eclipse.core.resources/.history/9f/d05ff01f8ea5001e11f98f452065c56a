@@ -1,0 +1,9 @@
+package test;
+import tree.BSTree;
+import tree.Tree;
+public class TestAlgorithm {
+	public static void main(String[] args) {
+		BSTree bst = new BSTree();
+		
+	}
+}

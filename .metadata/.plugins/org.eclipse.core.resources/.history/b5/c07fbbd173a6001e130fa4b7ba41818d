@@ -1,0 +1,175 @@
+package tree;
+
+import algorithm.Algorithm;
+
+public class AVLTree extends Tree{
+	private AVLNode root;
+	
+	public AVLTree() {
+		this.setRoot(null);
+	}
+	
+	public AVLNode getRoot() {
+		return root;
+	}
+	public void setRoot(AVLNode root) {
+		this.root = root;
+	}
+	
+	private AVLNode rightRotate(AVLNode node) {
+		AVLNode x = new AVLNode(node.getLeft().getNodeValue());
+		AVLNode y = new AVLNode(x.getRight().getNodeValue());
+		x.setRight(node);
+		node.setLeft(y);
+		node.setHeight(max(node.getLeft().getHeight(), node.getRight().getHeight() +1));
+		x.setHeight(max(x.getLeft().getHeight(), x.getRight().getHeight() +1));
+		return x;
+	}
+	
+	private AVLNode leftRotate(AVLNode node) {
+		AVLNode x = node.getRight();
+		AVLNode y = node.getLeft();
+		x.setLeft(node);
+		node.setRight(y);
+		node.setHeight(max(node.getLeft().getHeight(), node.getRight().getHeight() +1)) ;
+		x.setHeight(max(x.getLeft().getHeight(), x.getRight().getHeight() +1));
+		return x;
+	}
+	
+	public int getBalance(AVLNode node) {
+		if(node == null) {
+			return 0;
+		}
+		return node.getLeft().getHeight() - node.getRight().getHeight();
+		
+	}
+	
+	private  int max (int a, int b) {
+	      return (a > b) ? a : b;
+	   }
+	
+	private AVLNode minValue(AVLNode node) {
+		AVLNode x = node;
+		while(x.getLeft() != null) {
+			x = x.getLeft();
+		}
+		return x;
+	}
+	
+	private AVLNode delete(AVLNode node, int value) {
+		if(node == null) {
+			return null;
+		}
+		if(value < node.getNodeValue()) {
+			node.setLeft(delete(node.getLeft(), value));
+		}
+		else if(value > node.getNodeValue()) {
+			node.setRight(delete(node.getRight(),value));
+		}
+		else {
+			if(node.getLeft() == null || node.getRight() == null) {
+				AVLNode temp = null;
+				if(node.getLeft() == null)
+					temp = node.getRight();
+				else 
+					temp = node.getLeft();
+				if(temp == null) {
+					temp = node;
+					node = null;
+				}
+				else 
+					node = temp;
+			}
+			else {
+				AVLNode temp = minValue(node.getRight());
+				node.setValue(temp.getNodeValue());
+				node.setRight(delete(node.getRight(), temp.getNodeValue()));
+			}
+		}
+		if(node  == null)
+			return null;
+		node.setHeight(max(node.getLeft().getHeight(), node.getRight().getHeight() +1));
+		int balance = getBalance(node);
+		if(balance >1 && getBalance(node.getLeft()) >= 0) {
+			return rightRotate(node);
+		}
+		if(balance > 1 && getBalance(node.getLeft()) < 0) {
+			node.setLeft(leftRotate(node.getLeft()));
+			return rightRotate(node);
+		}
+		if(balance < -1 && getBalance(node.getRight()) <= 0) {
+			return leftRotate(node);
+		}
+		if(balance < -1 && getBalance(node.getRight()) > 0) {
+			node.setRight(rightRotate(node.getRight()));
+			return leftRotate(node);
+		}
+		return node;
+	}
+	
+	public  void insert( int  parentNodeValue, int  newNodeValue) {
+		this.setRoot(insert(this.getRoot(),newNodeValue));
+	};
+	
+	private AVLNode insert(AVLNode node, int value) {
+		if(node == null) {
+			return new AVLNode(value);
+		}
+		if(value < node.getNodeValue()) {
+			node.setLeft(insert(node.getLeft(), value));
+		}
+		else if(value > node.getNodeValue()) {
+			node.setRight(insert(node.getRight(), value));
+		}
+		else 
+			return node;
+		node.setHeight(1 + max(node.getLeft().getHeight(), node.getRight().getHeight()));
+		int balance = getBalance(node);
+		if(balance > 1 && value < node.getLeft().getNodeValue()) {
+			return rightRotate(node);
+		}
+		if(balance < -1 && value > node.getRight().getNodeValue()) {
+			return leftRotate(node);
+		}
+		if(balance > 1 && value > node.getLeft().getNodeValue()) {
+			node.setLeft(leftRotate(node.getLeft()));
+			return rightRotate(node);
+		}
+		if(balance < -1 && value < node.getRight().getNodeValue()) {
+			node.setRight(rightRotate(node.getRight()));
+			return leftRotate(node);
+		}
+		return node;
+	}
+	
+	public  void delete(int  nodeValue) {
+		
+		
+	};
+	public  void update(int currNodeValue, int newValue) {
+		
+	};
+	public  Node search(int nodeValue) {
+		return search(this.getRoot(), nodeValue);
+	};
+	
+	private Node search(Node root, int nodeValue) {
+		if(root == null) {
+			return null;
+		}
+		if(root.getNodeValue() == nodeValue) {
+			return root;
+		}
+		if(root.getNodeValue()>= nodeValue) {
+			return search(root.getRight(), nodeValue);
+		}
+		else {
+			return search(root.getLeft(), nodeValue);
+		}
+	}
+	
+	public void traverse(Algorithm algorithm) {
+		algorithm.traverse(this.getRoot());
+	};
+	
+}

@@ -1,0 +1,16 @@
+package tree;
+
+public class AVLNode extends Node {
+	int height;
+	public AVLNode(int x) {
+		super(x);
+		this.height = 1;
+		
+	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int x) {
+		this.height = x;
+	}
+}

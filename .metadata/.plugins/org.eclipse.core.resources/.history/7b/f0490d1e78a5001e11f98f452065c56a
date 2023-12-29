@@ -1,0 +1,66 @@
+package tree;
+
+public class BSTree extends Tree {
+	
+	public void insert( int parentNodeValue, int  newNodeValue) {
+		Node node = new Node(newNodeValue);
+		this.setRoot(insert(this.getRoot(),node));
+	};
+	
+	private Node insert( Node root, Node newNode) {
+		if(this.getRoot() == null) {
+			return newNode;
+		}
+		if(root.lessThan(newNode)) {
+			insert(root.getRight(), newNode);
+		}
+		else {
+			insert(root.getLeft(), newNode);
+		}
+		return root;
+		
+	}
+	
+	public  void delete(int  nodeValue) {
+		this.setRoot(delete(this.getRoot(), nodeValue));
+	};
+	
+	private Node delete(Node root, int nodeValue) {
+		if(root == null) {
+			return null;
+		}
+		if(root.getNodeValue() == nodeValue) {
+			if(root.getLeft() == null) {
+				return root.getRight();		
+				}
+			Node max = root.getLeft();
+			Node preNode = max;
+			while(max.getRight() != null) {
+				preNode = max;
+				max = max.getRight();
+			}
+			max.setRight(root.getRight());
+			if(max != root.getLeft()) {
+				max.setLeft(root.getLeft());
+				preNode.setRight(null);
+			}
+			return max;
+			
+			
+		}
+		if(root.getNodeValue() > nodeValue) {
+			root.setLeft(delete(root.getLeft(), nodeValue));
+		}
+		else {
+			root.setRight(delete(root.getRight(), nodeValue));
+		}
+		return root;
+	}
+	
+	public void  update(int currValue, int newValue) {
+		
+	};
+	public  void search(int nodeValue) {
+		
+	};
+}

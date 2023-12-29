@@ -1,0 +1,18 @@
+package tree;
+
+public class BSTree extends Tree {
+	
+	public void insert( int parentNodeValue, int  newNodeValue) {
+		
+	};
+	
+	public  void delete(int  nodeValue) {
+		
+	};
+	public void  update(int currValue, int newValue) {
+		
+	};
+	public  void search(int nodeValue) {
+		
+	};
+}

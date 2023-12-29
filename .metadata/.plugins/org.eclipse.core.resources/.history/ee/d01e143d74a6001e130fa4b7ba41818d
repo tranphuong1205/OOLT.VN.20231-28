@@ -1,0 +1,18 @@
+package test;
+
+import tree.BSTree;
+import algorithm.PostOrder;
+
+public class TestAlgorithm {
+	public static void main(String[] args) {
+		BSTree bst = new BSTree();
+		bst.insert(0, 12);
+		 bst.insert(0, 4);
+		 bst.insert(0, 18);
+		 bst.insert(0, 7);
+		 bst.delete(4);
+		PostOrder po = new PostOrder();
+		bst.traverse(po);
+		
+	}
+}

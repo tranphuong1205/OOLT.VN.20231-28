@@ -1,0 +1,21 @@
+package tree;
+
+public class AVLNode  {
+	private int value;
+	private AVLNode left;
+	private AVLNode right;
+	int height;
+	public AVLNode(int x) {
+		this.height = 1;
+		
+	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int x) {
+		this.height = x;
+	}
+	 int max (int a, int b) {
+	      return (a > b) ? a : b;
+	   }
+}

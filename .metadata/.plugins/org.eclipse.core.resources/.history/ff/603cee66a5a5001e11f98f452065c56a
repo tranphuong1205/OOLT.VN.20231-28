@@ -1,0 +1,17 @@
+package test;
+
+import tree.BSTree;
+import algorithm.PreOrder;
+
+public class TestAlgorithm {
+	public static void main(String[] args) {
+		BSTree bst = new BSTree();
+		bst.insert(0, 12);
+		 bst.insert(0, 4);
+		 bst.insert(0, 18);
+		 bst.insert(0, 7);
+		PreOrder po = new PreOrder();
+		po.traverse(bst.getRoot());
+		
+	}
+}
