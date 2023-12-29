@@ -73,7 +73,7 @@ public class BSTree extends Tree {
 		if(root.getNodeValue() == nodeValue) {
 			return root;
 		}
-		if(root.getNodeValue()>= nodeValue) {
+		if(root.getNodeValue()< nodeValue) {
 			return search(root.getRight(), nodeValue);
 		}
 		else {
