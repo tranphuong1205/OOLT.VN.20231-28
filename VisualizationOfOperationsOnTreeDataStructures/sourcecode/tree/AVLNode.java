@@ -1,6 +1,6 @@
 package tree;
 
-public class AVLNode extends Node  {
+public class AVLNode extends BNode  {
 	
 	private int height;
 	public AVLNode(int x) {

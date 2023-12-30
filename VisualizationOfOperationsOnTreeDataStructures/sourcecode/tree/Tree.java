@@ -3,7 +3,7 @@ package tree;
 import algorithm.Algorithm;
 
 public abstract class Tree {
-	private Node root;
+	protected Node root;
 	public Tree() {
 		this.setRoot(null);
 	}
@@ -19,7 +19,7 @@ public abstract class Tree {
 	public abstract void insert( int  parentNodeValue, int  newNodeValue);
 	public abstract void delete(int  nodeValue);
 	public abstract void update(int currNodeValue, int newValue);
-	public abstract Node search(int nodeValue);
+	public abstract BNode search(int nodeValue);
 	public abstract void traverse(Algorithm algorithm);
 	
 	}

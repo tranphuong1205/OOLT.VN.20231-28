@@ -2,7 +2,7 @@ package tree;
 
 import algorithm.Algorithm;
 
-public class AVLTree extends Tree{
+public class AVLTree extends BSTree{
 	private AVLNode root;
 	
 	public AVLTree() {
@@ -67,6 +67,7 @@ public class AVLTree extends Tree{
 	
 	public  void insert( int  parentNodeValue, int  newNodeValue) {
 		this.setRoot(insert(this.getRoot(),newNodeValue));
+		System.out.print(newNodeValue);
 	};
 	
 	private AVLNode insert(AVLNode node, int value) {
@@ -159,11 +160,11 @@ public class AVLTree extends Tree{
 	public  void update(int currNodeValue, int newValue) {
 		
 	};
-	public  Node search(int nodeValue) {
+	public  BNode search(int nodeValue) {
 		return search(this.getRoot(), nodeValue);
 	};
 	
-	private Node search(Node root, int nodeValue) {
+	private BNode search(BNode root, int nodeValue) {
 		if(root == null) {
 			return null;
 		}
