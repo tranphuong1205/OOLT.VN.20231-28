@@ -1,0 +1,41 @@
+package tree;
+
+public class BNode {
+	private int value;
+	protected BNode left;
+	protected BNode right;
+	
+	public BNode(int x) {
+		this.value = x;
+		this.left = null;
+		this.right = null;
+	}
+	
+	public int getNodeValue() {
+		return value;
+	}
+	public BNode getLeft() {
+		return left;
+	}
+	public BNode getRight() {
+		return right;
+	}
+	public void setValue(int x) {
+		this.value = x;
+	}
+	public void setLeft(BNode node) {
+		this.left = node;
+	}
+	public void setRight(BNode node) {
+		this.right = node;
+	}
+	public boolean lessThan(BNode node) {
+		return this.getNodeValue() <= node.getNodeValue();
+	}
+	public boolean greaterThan(BNode node) {
+		return this.getNodeValue() > node.getNodeValue();
+		
+}
+	
+	
+}
