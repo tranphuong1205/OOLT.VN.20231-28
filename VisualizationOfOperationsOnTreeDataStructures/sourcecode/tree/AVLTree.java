@@ -16,9 +16,9 @@ public class AVLTree extends BSTree{
 		this.root = root;
 	}
 	
-	private AVLNode rightRotate(AVLNode node) {
-		AVLNode x = new AVLNode(node.getLeft().getNodeValue());
-		AVLNode y = new AVLNode(x.getRight().getNodeValue());
+	protected AVLNode rightRotate(AVLNode node) {
+		AVLNode x = node.getLeft();
+		AVLNode y = x.getRight();
 		x.setRight(node);
 		node.setLeft(y);
 		node.setHeight(max(height(node.getLeft()), height(node.getRight()) +1));
@@ -26,7 +26,7 @@ public class AVLTree extends BSTree{
 		return x;
 	}
 	
-	private AVLNode leftRotate(AVLNode node) {
+	protected AVLNode leftRotate(AVLNode node) {
 		AVLNode x = node.getRight();
 		AVLNode y = node.getLeft();
 		x.setLeft(node);
@@ -67,7 +67,7 @@ public class AVLTree extends BSTree{
 	
 	public  void insert( int  parentNodeValue, int  newNodeValue) {
 		this.setRoot(insert(this.getRoot(),newNodeValue));
-		System.out.print(newNodeValue);
+		//System.out.print(newNodeValue);
 	};
 	
 	private AVLNode insert(AVLNode node, int value) {

@@ -1,13 +1,15 @@
 package test;
 
-import tree.AVLTree;
+
+import tree.BalanceTree;
 
 public class TestTree {
 	public static void main(String[] args) {
-	AVLTree avlt = new AVLTree();
-	avlt.insert(0, 12);
-	 avlt.insert(0, 4);
-	 avlt.insert(0, 18);
-	 avlt.insert(0, 7);
-	 avlt.insert(0, 9);
+	BalanceTree bt = new BalanceTree();
+	bt.insert(0, 12);
+	 bt.insert(0, 4);
+	 bt.insert(0, 18);
+	 bt.insert(0, 7);
+	 bt.insert(0, 9);
+	 
 }}
