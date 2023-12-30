@@ -1,8 +1,8 @@
 package algorithm;
-import tree.Node;
+import tree.BNode;
 
 public interface Algorithm {
-	public void traverse(Node node);
+	public void traverse(BNode node);
 	
 	}
 	

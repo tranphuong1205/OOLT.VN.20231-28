@@ -1,14 +1,20 @@
 package tree;
 import algorithm.Algorithm;
 public class BSTree extends Tree {
+	public BNode getRoot() {
+		return (BNode) root;
+	}
+	public void setRoot(BNode root) {
+		this.root = root;
+	}
 	
 	public void insert( int parentNodeValue, int  newNodeValue) {
-		Node node = new Node(newNodeValue);
+		BNode node = new BNode(newNodeValue);
 		this.setRoot(insert(this.getRoot(),node));
 		//System.out.print(newNodeValue + " had been inserted");
 	};
 	
-	private Node insert( Node root, Node newNode) {
+	private BNode insert( BNode root, BNode newNode) {
 		if(root == null) {
 			return newNode;
 		}
@@ -26,7 +32,7 @@ public class BSTree extends Tree {
 		this.setRoot(delete(this.getRoot(), nodeValue));
 	};
 	
-	private Node delete(Node root, int nodeValue) {
+	private BNode delete(BNode root, int nodeValue) {
 		if(root == null) {
 			return null;
 		}
@@ -34,8 +40,8 @@ public class BSTree extends Tree {
 			if(root.getLeft() == null) {
 				return root.getRight();		
 				}
-			Node max = root.getLeft();
-			Node preNode = max;
+			BNode max = root.getLeft();
+			BNode preNode = max;
 			while(max.getRight() != null) {
 				preNode = max;
 				max = max.getRight();
@@ -62,11 +68,11 @@ public class BSTree extends Tree {
 		
 	};
 	
-	public  Node search(int nodeValue) {
+	public  BNode search(int nodeValue) {
 		return search(this.getRoot(), nodeValue);
 	}
 	
-	private Node search(Node root, int nodeValue) {
+	private BNode search(BNode root, int nodeValue) {
 		if(root == null) {
 			return null;
 		}
