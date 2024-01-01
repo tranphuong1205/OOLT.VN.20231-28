@@ -1,0 +1,45 @@
+package tree;
+
+public class AVLNode  {
+	private int value;
+	private AVLNode left;
+	private AVLNode right;
+	private int height;
+	public AVLNode(int x) {
+		this.value = x;
+		this.left = null;
+		this.right = null;
+		this.height = 1;
+		
+	}
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int x) {
+		this.height = x;
+	}
+	public int getNodeValue() {
+		return value;
+	}
+	public AVLNode getLeft() {
+		return left;
+	}
+	public AVLNode getRight() {
+		return right;
+	}
+	public void setValue(int x) {
+		this.value = x;
+	}
+	public void setLeft(AVLNode node) {
+		this.left = node;
+	}
+	public void setRight(AVLNode node) {
+		this.right = node;
+	}
+	public boolean lessThan(AVLNode node) {
+		return this.getNodeValue() <= node.getNodeValue();
+	}
+	public boolean greaterThan(AVLNode node) {
+		return this.getNodeValue() > node.getNodeValue();}
+	
+}

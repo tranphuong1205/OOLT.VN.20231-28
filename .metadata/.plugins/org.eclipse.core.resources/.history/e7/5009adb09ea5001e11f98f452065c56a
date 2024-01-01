@@ -1,0 +1,6 @@
+package alogrithm;
+
+class PreOrder implements Algorithm {
+	
+	
+}

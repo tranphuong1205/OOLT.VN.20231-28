@@ -1,0 +1,24 @@
+package tree;
+
+public abstract class Tree {
+	private Node root;
+	public Tree() {
+		this.setRoot(null);
+	}
+	public Node getRoot() {
+		return root;
+	}
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+	public abstract void create();
+	public abstract Node insert( int  parentNodeValue, int  newNodeValue);
+	public abstract void delete(int  nodeValue);
+	public abstract void update(int currValue, int newValue);
+	public abstract Node search(int nodeValue);
+	public void traverse(String algorithm) {
+		
+	}
+	
+	}
+

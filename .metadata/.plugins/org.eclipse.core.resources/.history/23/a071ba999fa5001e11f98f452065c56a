@@ -1,0 +1,11 @@
+package algorithm;
+
+ class InOrder implements Algorithm{
+	 public void traverse(Node root) {
+		 if(root == null) {
+				return;}
+			in_order(root.getLeft());
+			System.out.print(root.getNodeValue() + "-> ");
+			in_order(root.getRight());
+	 }
+}

@@ -1,0 +1,21 @@
+package tree;
+
+import algorithm.Algorithm;
+
+public class AVLTree extends Tree{
+	public  void insert( int  parentNodeValue, int  newNodeValue) {
+		
+	};
+	public  void delete(int  nodeValue) {
+		
+	};
+	public  void update(int currNodeValue, int newValue) {
+		
+	};
+	public  Node search(int nodeValue) {
+		
+	};
+	public void traverse(Algorithm algorithm) {
+		algorithm.traverse(this.getRoot());
+	};
+}

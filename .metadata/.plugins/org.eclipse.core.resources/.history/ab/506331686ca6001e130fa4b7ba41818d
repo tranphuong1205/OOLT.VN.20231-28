@@ -1,0 +1,43 @@
+package tree;
+
+import algorithm.Algorithm;
+
+public class AVLTree extends Tree{
+	private AVLNode root;
+	public AVLTree() {
+		this.setRoot(null);
+	}
+	
+	
+	public  void insert( int  parentNodeValue, int  newNodeValue) {
+		
+	};
+	public  void delete(int  nodeValue) {
+		
+	};
+	public  void update(int currNodeValue, int newValue) {
+		
+	};
+	public  Node search(int nodeValue) {
+		return search(this.getRoot(), nodeValue);
+	};
+	
+	private Node search(Node root, int nodeValue) {
+		if(root == null) {
+			return null;
+		}
+		if(root.getNodeValue() == nodeValue) {
+			return root;
+		}
+		if(root.getNodeValue()>= nodeValue) {
+			return search(root.getRight(), nodeValue);
+		}
+		else {
+			return search(root.getLeft(), nodeValue);
+		}
+	}
+	
+	public void traverse(Algorithm algorithm) {
+		algorithm.traverse(this.getRoot());
+	};
+}

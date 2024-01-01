@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.util.LinkedList"/>
+    <fullyQualifiedTypeName name="tree.BSTree"/>
+    <fullyQualifiedTypeName name="tree.Tree"/>
+    <fullyQualifiedTypeName name="tree.Algorithm"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="tree.Node"/>
+    <fullyQualifiedTypeName name="algorithm.Algorithm"/>
+    <fullyQualifiedTypeName name="tree.GenericNode"/>
+    <fullyQualifiedTypeName name="algorithm.PreOrder"/>
+    <fullyQualifiedTypeName name="tree.AVLTree"/>
+    <fullyQualifiedTypeName name="tree.GenericTree"/>
+</qualifiedTypeNameHistroy>

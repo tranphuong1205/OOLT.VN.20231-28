@@ -1,0 +1,10 @@
+package tree;
+
+public class AVLNode extends Node {
+	int height;
+	public AVLNode(int x) {
+		super(x);
+		this.height = 1;
+		
+	}
+}

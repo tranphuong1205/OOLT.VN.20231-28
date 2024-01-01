@@ -1,0 +1,11 @@
+package algorithm;
+import tree.Node;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public interface Algorithm {
+	public void traverse(Node node);
+	
+	}
+	
+	

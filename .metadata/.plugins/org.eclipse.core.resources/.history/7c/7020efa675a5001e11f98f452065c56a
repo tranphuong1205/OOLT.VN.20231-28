@@ -1,0 +1,31 @@
+package tree;
+
+public class BSTree extends Tree {
+	
+	public void insert( int parentNodeValue, int  newNodeValue) {
+		Node node = new Node(newNodeValue);
+		this.setRoot(insert(this.getRoot(),node));
+	};
+	private Node insert( Node root, Node newNode) {
+		if(this.getRoot() == null) {
+			return newNode;
+		}
+		if(root.lessThan(newNode)) {
+			insert(root.getRight(), newNode);
+		}
+		else {
+			insert(root.getLeft(), newNode);
+		}
+		return root;
+		
+	}
+	public  void delete(int  nodeValue) {
+		
+	};
+	public void  update(int currValue, int newValue) {
+		
+	};
+	public  void search(int nodeValue) {
+		
+	};
+}
