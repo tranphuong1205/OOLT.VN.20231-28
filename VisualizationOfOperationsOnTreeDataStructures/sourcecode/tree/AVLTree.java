@@ -16,7 +16,7 @@ public class AVLTree extends BSTree{
 		this.root = root;
 	}
 	
-	protected AVLNode rightRotate(AVLNode node) {
+	private AVLNode rightRotate(AVLNode node) {
 		AVLNode x = node.getLeft();
 		AVLNode y = x.getRight();
 		x.setRight(node);
@@ -26,7 +26,7 @@ public class AVLTree extends BSTree{
 		return x;
 	}
 	
-	protected AVLNode leftRotate(AVLNode node) {
+	private AVLNode leftRotate(AVLNode node) {
 		AVLNode x = node.getRight();
 		AVLNode y = node.getLeft();
 		x.setLeft(node);
@@ -160,11 +160,11 @@ public class AVLTree extends BSTree{
 	public  void update(int currNodeValue, int newValue) {
 		
 	};
-	public  BNode search(int nodeValue) {
+	public  AVLNode search(int nodeValue) {
 		return search(this.getRoot(), nodeValue);
 	};
 	
-	private BNode search(BNode root, int nodeValue) {
+	private AVLNode search(AVLNode root, int nodeValue) {
 		if(root == null) {
 			return null;
 		}

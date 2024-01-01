@@ -17,7 +17,7 @@ public abstract class Tree {
 	public abstract void insert( int  parentNodeValue, int  newNodeValue);
 	public abstract void delete(int  nodeValue);
 	public abstract void update(int currNodeValue, int newValue);
-	public abstract BNode search(int nodeValue);
+	public abstract Node search(int nodeValue);
 	public abstract void traverse(Algorithm algorithm);
 	
 	}
