@@ -1,7 +1,21 @@
 package tree;
 
-public class BalanceTree extends AVLTree {
-	public AVLNode splay(AVLNode root, int x) {
+public class BalanceTree extends BSTree {
+	
+	private BNode rightRotate(BNode x) {
+		 BNode y = x.getLeft();
+		 x.setLeft(y.getRight());
+		 y.setRight(x);
+		 return y;
+	}
+	private BNode leftRotate(BNode x) {
+		BNode y = x.getRight();
+		x.setRight(y.getLeft());
+		y.setLeft(x);
+		return y;
+	}
+	
+	public BNode splay(BNode root, int x) {
 		if(root == null || root.getNodeValue() == x) {
 			return root;
 		}
@@ -42,8 +56,8 @@ public class BalanceTree extends AVLTree {
 		this.setRoot(insert(this.getRoot(), y));
 		//System.out.print(this.getRoot().getNodeValue());
 	}
-	private AVLNode insert(AVLNode root, int x) {
-		AVLNode node = new AVLNode(x);
+	private BNode insert(BNode root, int x) {
+		BNode node = new BNode(x);
 		if(root == null)
 			return node;
 		root = splay(root, x);
@@ -65,8 +79,8 @@ public class BalanceTree extends AVLTree {
 	public void delete(int x) {
 		this.setRoot(delete(this.getRoot(),x));
 	}
-	private AVLNode delete(AVLNode root, int x) {
-		AVLNode temp;
+	private BNode delete(BNode root, int x) {
+		BNode temp;
 		if(root == null)
 			return null;
 		root = splay(root, x);
@@ -84,11 +98,11 @@ public class BalanceTree extends AVLTree {
 		return root;
 	}
 	
-	public AVLNode search(int x) {
+	public BNode search(int x) {
 		return search(this.getRoot(), x);
 	}
 	
-	private AVLNode search(AVLNode root,int x) {
+	private BNode search(BNode root,int x) {
 		return splay(root,x);
 	}
 	
