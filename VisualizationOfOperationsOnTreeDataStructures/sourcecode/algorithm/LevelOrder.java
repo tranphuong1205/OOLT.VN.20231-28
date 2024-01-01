@@ -1,15 +1,16 @@
 package algorithm;
 
-import tree.Node;
+import tree.GenericNode;
+import tree.BNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
  public class LevelOrder implements Algorithm{
-	 public void traverse(Node root) {
-		 Queue<Node> nodeList = new LinkedList<Node>();
+	 public void traverse(BNode root) {
+		 Queue<BNode> nodeList = new LinkedList<BNode>();
 			nodeList.add(root);
 			while(!nodeList.isEmpty()) {
-				Node temp = nodeList.poll();
+				BNode temp = nodeList.poll();
 				System.out.print(temp.getNodeValue()+ " -> ");
 				if(temp.getLeft() != null) {
 					nodeList.add(temp.getLeft());
@@ -18,5 +19,20 @@ import java.util.Queue;
 					nodeList.add(temp.getRight());
 				}
 			}
+	 }
+public void traverse( GenericNode node) {
+		 if(node == null) return ;
+		 Queue<GenericNode> queue = new LinkedList<GenericNode>();
+		 queue.offer(node);
+		 while(!queue.isEmpty()) {
+			 GenericNode p = queue.poll();
+			 System.out.print(p.getNodeValue() + " ");
+			 GenericNode q = p.getLeftMostChild();
+			 while( q != null) {
+				 queue.offer(q);
+				 q = q.getRightSibling();
+			 }
+		 }
+		 
 	 }
 }

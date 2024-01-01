@@ -6,7 +6,9 @@
     <fullyQualifiedTypeName name="tree.Algorithm"/>
     <fullyQualifiedTypeName name="java.util.Queue"/>
     <fullyQualifiedTypeName name="tree.Node"/>
-    <fullyQualifiedTypeName name="tree.AVLTree"/>
-    <fullyQualifiedTypeName name="algorithm.PreOrder"/>
     <fullyQualifiedTypeName name="algorithm.Algorithm"/>
+    <fullyQualifiedTypeName name="tree.GenericNode"/>
+    <fullyQualifiedTypeName name="algorithm.PreOrder"/>
+    <fullyQualifiedTypeName name="tree.AVLTree"/>
+    <fullyQualifiedTypeName name="tree.GenericTree"/>
 </qualifiedTypeNameHistroy>
