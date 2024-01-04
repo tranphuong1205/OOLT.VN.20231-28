@@ -23,8 +23,14 @@ public class GenericTree extends Tree {
 		}
 		GenericNode h = search(parentValue);
 		GenericNode temp = h.getLeftMostChild();
-		h.setLeftMostChild(node);
-		node.setRightSibling(temp);
+		if(temp == null){
+			h.setLeftMostChild(node);
+		}
+		else{
+		while (temp.getRightSibling() != null){
+			temp = temp.getRightSibling();
+		}
+		temp.setRightSibling(node);}
 		return root;
 	}
 	
@@ -34,13 +40,27 @@ public class GenericTree extends Tree {
 	
 	private GenericNode delete(GenericNode root, int deleteValue) {
 		if(root == null) return null;
-		GenericNode p = search(root, deleteValue);
-		if(p == null) {
-			System.out.print(" can't found "+ deleteValue);
+		if(root.getNodeValue() == deleteValue){
+			GenericNode newRoot = root.getRightSibling();
+			root = null;
+			return  newRoot;
+		}
+		GenericNode p =root.getLeftMostChild();
+		GenericNode q = null;
+		while (p != null && p.getNodeValue() != deleteValue){
+			q = p;
+		p = p.getRightSibling();
+
+		}
+		if(p == null){
 			return root;
 		}
-		GenericNode q = parent(root, p);
-		q.setLeftMostChild(p.getLeftMostChild());
+		if(q == null){
+			root.setLeftMostChild(p.getRightSibling());
+		}
+		else{
+			q.setRightSibling(p.getRightSibling());
+		}
 		p = null;
 		return root;
 		
