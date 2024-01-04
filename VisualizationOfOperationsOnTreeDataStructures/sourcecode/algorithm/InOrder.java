@@ -1,13 +1,25 @@
 package algorithm;
 import tree.BNode;
 import tree.GenericNode;
- public  class InOrder implements Algorithm{
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+public  class InOrder implements Algorithm{
+	 private ScheduledExecutorService executorService;
+	public InOrder() {
+		this.executorService = Executors.newSingleThreadScheduledExecutor();
+	}
 	 public void traverse(BNode root) {
 		 if(root == null) {
 				return;}
-			traverse(root.getLeft());
+		 traverseWithDelay(root);
+
+			/*traverse(root.getLeft());
 			System.out.print(root.getNodeValue() + "-> ");
-			traverse(root.getRight());
+			root.isVisited = true;
+			traverse(root.getRight());*/
 	 }
 	 public void traverse( GenericNode node) {
 		 if(node == null) return ;
@@ -19,6 +31,15 @@ import tree.GenericNode;
 		 while(p != null) {
 			 traverse(p);
 			 p = p.getRightSibling();
+		 }
+	 }
+	 private void traverseWithDelay(BNode node) {
+		 if (node != null) {
+			 executorService.schedule(() -> {
+				 System.out.print(node.getNodeValue() + "-> ");
+				 node.setVisited(true);
+				 traverse(node.getRight());
+			 }, 2, TimeUnit.SECONDS);
 		 }
 	 }
 	
