@@ -2,15 +2,28 @@
 <section name="Workbench">
 	<section name="SmartImportWizard">
 		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
-		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\HP\OOLT.VN.20231-28\TreeDataStructureProject"/>
+			<item value="C:\Users\HP\OOLT.VN.20231-28\TreeDataStructuresProject\src\hedspi"/>
+			<item value="C:\Users\HP\OOLT.VN.20231-28\TreeDataStructuresProject\src"/>
+			<item value="C:\Users\HP\OOLT.VN.20231-28\TreeDataStructuresProject"/>
+			<item value="D:\src\hedspi"/>
+			<item value="D:\src"/>
+			<item value="C:\Users\HP\OOLT.VN.20231-28\VisualizationOfOperationsOnTreeDataStructures"/>
+			<item value="C:\Users\HP\OOLT.VN.20231-28\VisualizationOfOperationsOnTreeDataStructures\sourcecode"/>
+			<item value="C:\Users\HP\OOLT.VN.20231-28"/>
 			<item value="D:\OOP"/>
 			<item value="D:\OOP\VisualizationOfOperationsOnTreeDataStructures"/>
 		</list>
 	</section>
 	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.fx.ide.jdt.ui.javafx"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.fx.ide"/>
+		</list>
 	</section>
 	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
 		<item key="ShowStatusLine" value="true"/>
@@ -25,5 +38,13 @@
 			<item key="DIALOG_Y_ORIGIN" value="186"/>
 			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 		</section>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="611"/>
+		<item key="DIALOG_Y_ORIGIN" value="269"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>

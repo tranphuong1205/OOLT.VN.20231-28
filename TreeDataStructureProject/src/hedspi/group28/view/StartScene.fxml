@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<Pane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="662.0" fitWidth="941.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/StartBackGround.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="BSTid" layoutX="27.0" layoutY="151.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="146.0" text="Binary Search Tree" visible="false" />
+ 	  <Button fx:id="About" layoutX="858.0" layoutY="598.0" mnemonicParsing="false" text="About" />
+      <Button fx:id="Start" blendMode="COLOR_BURN" layoutX="474.0" layoutY="397.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="176.0" text="Start" textAlignment="CENTER" textOverrun="CLIP">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="42.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="#ff4949" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
+      <Button fx:id="AVLid" layoutX="196.0" layoutY="257.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="168.0" text="Adelson-Velskii Landis" visible="false" />
+      <Button fx:id="BBSTid" layoutX="93.0" layoutY="458.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="160.0" text="Balanced binary tree" visible="false" wrapText="true" />
+      <Button fx:id="Genid" layoutX="253.0" layoutY="46.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="105.0" text="Generic tree" visible="false" />
+   </children>
+</Pane>

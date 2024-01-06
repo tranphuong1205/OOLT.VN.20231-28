@@ -77,7 +77,9 @@ public class BSTVisualization extends Application {
         pane.setBottom(hBox);
 
     }
-    public void addAlgorithm(TextField insertPValue ,TextField insertCValue,TextField deleteValue,TextField searchedValue,HBox i, HBox d, HBox s,Button insertCf, Button insert,Button deleteCf, Button delete,Button searchCf, Button search, BSTree tree, BSTPane view, MenuItem inOrder){
+    public void addAlgorithm(TextField insertPValue ,TextField insertCValue,TextField 
+    		deleteValue,TextField searchedValue,HBox i, HBox d, HBox s,Button insertCf, 
+    		Button insert,Button deleteCf, Button delete,Button searchCf, Button search, BSTree tree, BSTPane view, MenuItem inOrder){
         insert.setOnAction(e -> {
             i.setVisible(true); }
         );

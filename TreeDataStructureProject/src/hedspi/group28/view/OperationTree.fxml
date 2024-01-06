@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+fx:controller="hedspi.group28.controller.OperationTreeController">
+   <children>
+      <GridPane layoutX="52.0" layoutY="446.0" prefHeight="180.0" prefWidth="207.0">
+         <children>
+            <Button fx:id="insertButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="137.0" text="Insert" onAction="#handleInsert"/>
+            <Button fx:id="removeButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="124.0" text="Remove" GridPane.rowIndex="1" />
+            <Button fx:id="updateButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="141.0" text="Update" GridPane.rowIndex="2" />
+            <TextField fx:id="inputInsert" prefHeight="31.0" prefWidth="115.0" GridPane.columnIndex="1" />
+            <Button fx:id="goInsert" mnemonicParsing="false" onAction="#handleGoInsert" prefHeight="31.0" prefWidth="43.0" text="Go" visible="false" GridPane.columnIndex="2" />
+            <Button fx:id="traverseButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="143.0" text="Traverse" GridPane.rowIndex="3" />
+            <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="31.0" prefWidth="105.0" text="Search" GridPane.rowIndex="4" />
+            <TextField fx:id="inputRemove" prefHeight="31.0" prefWidth="115.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="inputUpdate" prefHeight="31.0" prefWidth="115.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="inputTraverse" prefHeight="31.0" prefWidth="115.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="inputSearch" prefHeight="31.0" prefWidth="115.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="goInsert1" mnemonicParsing="false" onAction="#handleGoInsert" prefHeight="31.0" prefWidth="43.0" text="Go" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="goInsert2" mnemonicParsing="false" onAction="#handleGoInsert" prefHeight="31.0" prefWidth="43.0" text="Go" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="goInsert3" mnemonicParsing="false" onAction="#handleGoInsert" prefHeight="31.0" prefWidth="43.0" text="Go" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="goInsert4" mnemonicParsing="false" onAction="#handleGoInsert" prefHeight="31.0" prefWidth="43.0" text="Go" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.0" minWidth="10.0" prefWidth="86.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="82.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="43.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="31.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="29.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

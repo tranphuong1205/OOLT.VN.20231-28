@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.Label?>
+
+<StackPane alignment="CENTER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="test.NodeViewController">
+   <children>
+   
+       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="456.0">
+           <children>
+               <Circle fx:id="circle" fill="WHITE" layoutX="228.0" layoutY="194.0" radius="20.0" stroke="BLACK" strokeWidth="3.0" />
+               <Label fx:id="label" layoutX="208.0" layoutY="186.0" prefWidth="40.0" style="-fx-font-family: Arial; -fx-font-size: 14.0; -fx-font-weight: bold;" textAlignment="CENTER" textFill="BLACK" wrapText="true" />
+           </children>
+       </Pane>
+   </children>
+
+</StackPane>

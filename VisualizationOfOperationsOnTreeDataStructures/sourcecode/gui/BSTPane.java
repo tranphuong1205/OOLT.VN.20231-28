@@ -55,5 +55,4 @@ public class BSTPane extends Pane {
     public void clearSearch() {
         this.searchedNode = null;
     }
-
-    }
+}
