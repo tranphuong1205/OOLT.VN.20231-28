@@ -172,9 +172,11 @@ public class AVLTree extends BSTree{
 			return root;
 		}
 		if(root.getNodeValue()< nodeValue) {
+			root.setVisited(true);
 			return search(root.getRight(), nodeValue);
 		}
 		else {
+			root.setVisited(true);
 			return search(root.getLeft(), nodeValue);
 		}
 	}

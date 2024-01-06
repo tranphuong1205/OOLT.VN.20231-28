@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="algorithm.PreOrder"/>
     <fullyQualifiedTypeName name="tree.AVLTree"/>
     <fullyQualifiedTypeName name="tree.GenericTree"/>
+    <fullyQualifiedTypeName name="javafx.scene.layout.Pane"/>
 </qualifiedTypeNameHistroy>

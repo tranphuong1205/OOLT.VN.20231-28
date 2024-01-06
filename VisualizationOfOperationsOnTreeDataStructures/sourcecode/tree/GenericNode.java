@@ -3,6 +3,7 @@ package tree;
 public class GenericNode extends Node {
 	private GenericNode leftMostChild;
 	private GenericNode rightSibling;
+
 	
 	public GenericNode(int x) {
 		super(x);

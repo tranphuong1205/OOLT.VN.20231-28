@@ -23,8 +23,14 @@ public class GenericTree extends Tree {
 		}
 		GenericNode h = search(parentValue);
 		GenericNode temp = h.getLeftMostChild();
-		h.setLeftMostChild(node);
-		node.setRightSibling(temp);
+		if(temp == null){
+			h.setLeftMostChild(node);
+		}
+		else{
+		while (temp.getRightSibling() != null){
+			temp = temp.getRightSibling();
+		}
+		temp.setRightSibling(node);}
 		return root;
 	}
 	
@@ -33,16 +39,49 @@ public class GenericTree extends Tree {
 	}
 	
 	private GenericNode delete(GenericNode root, int deleteValue) {
-		if(root == null) return null;
-		GenericNode p = search(root, deleteValue);
-		if(p == null) {
-			System.out.print(" can't found "+ deleteValue);
+		GenericNode h = search(deleteValue);
+		if(h == null) return  root;
+		GenericNode p = parent(root, h);
+		GenericNode q = leftSibling(root, h);
+
+		if(p == null) return  null;
+		if(q == null){
+			p.setLeftMostChild(h.getRightSibling());
+			h = null;
 			return root;
 		}
-		GenericNode q = parent(root, p);
-		q.setLeftMostChild(p.getLeftMostChild());
+		else{
+			q.setRightSibling(h.getRightSibling());
+			h = null;
+			return root;
+		}
+
+
+		/* if(root == null) return null;
+		if(root.getNodeValue() == deleteValue){
+			GenericNode newRoot = root.getRightSibling();
+			root = null;
+			return  newRoot;
+		}
+		GenericNode p =root.getLeftMostChild();
+		GenericNode q = null;
+		while (p != null && p.getNodeValue() != deleteValue){
+			q = p;
+
+		p = p.getRightSibling();
+
+		}
+		if(p == null){
+			delete(root.getLeftMostChild(), deleteValue);
+		}
+		if(q == null){
+			root.setLeftMostChild(p.getRightSibling());
+		}
+		else{
+			q.setRightSibling(p.getRightSibling());
+		}
 		p = null;
-		return root;
+		return root;*/
 		
 	}
 	
@@ -51,9 +90,21 @@ public class GenericTree extends Tree {
 		GenericNode q = root.getLeftMostChild();
 		while(q != null) {
 			if(p == q) return root;
-			GenericNode pp = parent(p, q);
+			GenericNode pp = parent( q,p);
 			if(pp != null) return pp;
 			q = q.getRightSibling();
+		}
+		return null;
+	}
+	private GenericNode leftSibling(GenericNode root, GenericNode p){
+		if(root == null) return  null;
+		if(root.getRightSibling() == p) return root;
+		else {
+			GenericNode q = root.getLeftMostChild();
+			while (q != null) {
+				if (leftSibling(q, p) != null) return leftSibling(q, p);
+				q = q.getRightSibling();
+			}
 		}
 		return null;
 	}
@@ -65,6 +116,7 @@ public class GenericTree extends Tree {
 	private GenericNode search(GenericNode root, int searchValue) {
 		if(root == null) return null;
 		if(root.getNodeValue() == searchValue) return root;
+		root.setVisited(true);
 		GenericNode p = root.getLeftMostChild();
 		while(p != null) {
 			GenericNode h = search(p, searchValue);
