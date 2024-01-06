@@ -1,4 +1,6 @@
 package algorithm;
+import gui.BSTPane;
+import javafx.scene.layout.Pane;
 import tree.GenericNode;
 import tree.BNode;
 public class PreOrder implements Algorithm {
@@ -18,5 +20,6 @@ public class PreOrder implements Algorithm {
 			 p = p.getRightSibling();
 		 }
 	 }
+	 public void uiTraverse(BNode node, BSTPane pane){}
 	
 }

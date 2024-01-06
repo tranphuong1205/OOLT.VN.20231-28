@@ -2,6 +2,7 @@ package test;
 
 import algorithm.PreOrder;
 //import tree.AVLTree;
+import tree.BalanceTree;
 import tree.GenericTree;
 //import tree.BSTree;
 
@@ -24,7 +25,7 @@ public class TestAlgorithm {
 		 avlt.insert(0, 7);
 		 avlt.insert(0, 9);
 		 PreOrder po = new PreOrder();
-		 avlt.traverse(po);*/
+		 avlt.traverse(po);
 		GenericTree bt = new GenericTree();
 		bt.insert(1, 12);
 		 bt.insert(12, 4);
@@ -33,7 +34,13 @@ public class TestAlgorithm {
 		 bt.insert(7, 9); 
 		 bt.insert(7, 30);
 		 PreOrder po = new PreOrder();
-		 bt.traverse(po);
+		 bt.traverse(po);*/
+		BalanceTree tree = new BalanceTree();
+		tree.insert(0, 5);
+		tree.insert(0,8);
+		tree.insert(0,12);
+		tree.insert(0,1);
+		System.out.println(tree.search(8).getNodeValue());
 		
 	}
 }

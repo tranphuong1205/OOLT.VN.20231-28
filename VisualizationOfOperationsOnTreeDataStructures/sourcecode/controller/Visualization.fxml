@@ -26,6 +26,24 @@
             </cursor>
         </Button>
 
+        <Button fx:id="avl" layoutX="26.0" layoutY="100.0" mnemonicParsing="false" onAction="#avlAction" prefHeight="44.0" prefWidth="77.0" style="-fx-background-color: #98FB98;" text="avl">
+            <effect>
+                <DropShadow />
+            </effect>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+
+        <Button fx:id="bt" layoutX="26.0" layoutY="25.0" mnemonicParsing="false" onAction="#btAction" prefHeight="44.0" prefWidth="77.0" style="-fx-background-color: #98FB98;" text="Balance Tree">
+            <effect>
+                <DropShadow />
+            </effect>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+
 
     </children>
 </AnchorPane>

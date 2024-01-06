@@ -1,40 +1,28 @@
 package gui;
 
-import algorithm.Algorithm;
 import algorithm.InOrder;
 import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import tree.AVLNode;
+import tree.AVLTree;
 import tree.BNode;
 import tree.BSTree;
-import tree.GenericNode;
-import tree.GenericTree;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
-public class BSTVisualization extends Application {
+public class AVLVisualization extends Application {
     public void start(Stage primaryStage){
-        BSTree  tree = new BSTree();
+        AVLTree tree = new AVLTree();
         BorderPane pane = new BorderPane();
-        BSTPane bstPane = new BSTPane(tree);
-        setPane(pane,bstPane, tree);
-        setStage(pane, primaryStage, " Binary Search Tree");
-
+        AVLPane avlPane = new AVLPane(tree);
+        setPane(pane,avlPane, tree);
+        setStage(pane, primaryStage, " AVL Tree");
     }
     public void setStage(BorderPane pane, Stage primaryStage, String title){
         Scene scene = new Scene(pane, 700, 700);
@@ -42,8 +30,8 @@ public class BSTVisualization extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-    public void setPane(BorderPane pane, BSTPane  bstPane, BSTree tree){
-        pane.setCenter(bstPane);
+    public void setPane(BorderPane pane, AVLPane  avlPane, AVLTree tree){
+        pane.setCenter(avlPane);
         MenuButton menu = new MenuButton("Create");
         javafx.scene.control.MenuItem g = new javafx.scene.control.MenuItem("Generic Tree");
         javafx.scene.control.MenuItem bst = new javafx.scene.control.MenuItem("Binary Search Tree");
@@ -76,12 +64,13 @@ public class BSTVisualization extends Application {
         Button  delete = new Button("Delete");
         Button  search = new Button("Search");
         MenuButton traMenu = new MenuButton("traverse");
-        MenuItem level = new MenuItem("BFS");
-        MenuItem pre = new MenuItem("DFS");
+        MenuItem level = new MenuItem("Level_order");
+        MenuItem pre = new MenuItem("Pre_order");
+        MenuItem in = new MenuItem("In_0rder");
+        MenuItem pos = new MenuItem("Post_order");
 
-
-        traMenu.getItems().addAll(level, pre);
-        addAlgorithm(insertPValue, insertCValue,deleteValue,searchValue,i,d,s,insertCf,insert,deleteCf,delete,searchCf,search,tree, bstPane, pre, level);
+        traMenu.getItems().addAll(level, pre, in, pos);
+        addAlgorithm(insertPValue, insertCValue,deleteValue,searchValue,i,d,s,insertCf,insert,deleteCf,delete,searchCf,search,tree, avlPane, pre, level);
 
 
         HBox hBox = new HBox(20);
@@ -90,7 +79,7 @@ public class BSTVisualization extends Application {
         pane.setBottom(hBox);
 
     }
-    public void addAlgorithm(TextField insertPValue ,TextField insertCValue,TextField deleteValue,TextField searchedValue,HBox i, HBox d, HBox s,Button insertCf, Button insert,Button deleteCf, Button delete,Button searchCf, Button search, BSTree tree, BSTPane view, MenuItem preOrder, MenuItem leverOrder){
+    public void addAlgorithm(TextField insertPValue ,TextField insertCValue,TextField deleteValue,TextField searchedValue,HBox i, HBox d, HBox s,Button insertCf, Button insert,Button deleteCf, Button delete,Button searchCf, Button search, AVLTree tree, AVLPane view, MenuItem pre, MenuItem level){
         insert.setOnAction(e -> {
             i.setVisible(true);
             insertPValue.setVisible(false);
@@ -105,6 +94,7 @@ public class BSTVisualization extends Application {
             }
             else{
                 int key = Integer.parseInt(insertCValue.getText());
+
 
 
                 if(tree.search(key) != null){
@@ -143,7 +133,7 @@ public class BSTVisualization extends Application {
             }
             else{
                 int key = Integer.parseInt(searchedValue.getText());
-                BNode searchedNode = tree.search(key);
+                AVLNode searchedNode = tree.search(key);
                 view.searchNode(searchedNode);
                 view.displayTree();
             }
@@ -151,28 +141,14 @@ public class BSTVisualization extends Application {
             s.setVisible(false);
             view.clearSearch();
         });
-        preOrder.setOnAction(e -> {
-         preOrderUI(tree.getRoot(), view);
-
-        });
-        leverOrder.setOnAction(e -> {
+        level.setOnAction(e -> {
             levelOrder(tree.getRoot(), view);
         });
-}
-
-    public Group findGroup(int k, Pane pane){
-        for(Node node : pane.getChildren()){
-            if(node instanceof Group){
-                for(Node gC : ((Group) node).getChildren()){
-                    if(gC instanceof Text text && text.getText().equals(String.valueOf(k)) )
-                        return (Group) node;
-                }
-            }
-        }
-        return null;
+        pre.setOnAction(e -> {
+            preOrderUI(tree.getRoot(), view);
+        });
     }
-
-    public  void preOrderUI(BNode r, BSTPane pane) {
+    public  void preOrderUI(BNode r, AVLPane pane) {
         if(r == null) return;
         r.setVisited(true);
         pane.displayTree();
@@ -182,12 +158,12 @@ public class BSTVisualization extends Application {
                 event -> {
                     // Duyệt sang nút con trái
                     preOrderUI(r.getLeft(), pane);
-        Timeline waitLeft = new Timeline(new KeyFrame(
-                Duration.seconds(2),
-                e -> {
-                    // Duyệt sang nút phải
-                    preOrderUI(r.getRight(), pane);}));
-                waitLeft.play();
+                    Timeline waitLeft = new Timeline(new KeyFrame(
+                            Duration.seconds(2),
+                            e -> {
+                                // Duyệt sang nút phải
+                                preOrderUI(r.getRight(), pane);}));
+                    waitLeft.play();
                 }
         ));
         waitTimeline.play();
@@ -195,24 +171,22 @@ public class BSTVisualization extends Application {
 
     }
 
-        public void levelOrder(BNode r, BSTPane pane) {
-            if(r == null) return;
-            r.setVisited(true);
-            pane.displayTree();
+    public void levelOrder(BNode r, AVLPane pane) {
+        if(r == null) return;
+        r.setVisited(true);
+        pane.displayTree();
 
-            Timeline waitTimeline = new Timeline(new KeyFrame(
-                    Duration.seconds(2),
-                    event -> {
-                        // Duyệt sang nút con trái
-                        levelOrder(r.getLeft(), pane);
+        Timeline waitTimeline = new Timeline(new KeyFrame(
+                Duration.seconds(2),
+                event -> {
+                    // Duyệt sang nút con trái
+                    levelOrder(r.getLeft(), pane);
 
-                        // Duyệt sang nút phải
-                        levelOrder(r.getRight(), pane);
-                    }
-            ));
-            waitTimeline.play();
-        }
-
-
+                    // Duyệt sang nút phải
+                    levelOrder(r.getRight(), pane);
+                }
+        ));
+        waitTimeline.play();
+    }
 
 }

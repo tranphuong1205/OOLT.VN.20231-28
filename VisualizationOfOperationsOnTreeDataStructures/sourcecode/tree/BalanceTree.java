@@ -30,7 +30,7 @@ public class BalanceTree extends BSTree {
 			else if(root.getLeft().getNodeValue() < x) {
 				root.getLeft().setRight(splay(root.getLeft().getRight(), x));
 			
-			if(root.getLeft().getRight() != null)
+				if(root.getLeft().getRight() != null)
 				root.setLeft(leftRotate(root.getLeft()));
 		}
 			return (root.getLeft() == null) ? root: rightRotate(root);
@@ -54,25 +54,29 @@ public class BalanceTree extends BSTree {
 	}
 	public void insert(int x, int y) {
 		this.setRoot(insert(this.getRoot(), y));
-		//System.out.print(this.getRoot().getNodeValue());
+		System.out.print(this.getRoot().getNodeValue());
 	}
 	private BNode insert(BNode root, int x) {
 		BNode node = new BNode(x);
-		if(root == null)
+
+		if (root == null)
 			return node;
+
 		root = splay(root, x);
-		if(root.getNodeValue() == x)
+
+		if (root.getNodeValue() == x)
 			return root;
-		if(root.getNodeValue() > x) {
+
+		if (root.getNodeValue() > x) {
 			node.setRight(root);
 			node.setLeft(root.getLeft());
 			root.setLeft(null);
-		}
-		else {
+		} else {
 			node.setLeft(root);
 			node.setRight(root.getRight());
 			root.setRight(null);
 		}
+
 		return node;
 	}
 	
@@ -103,7 +107,28 @@ public class BalanceTree extends BSTree {
 	}
 	
 	private BNode search(BNode root,int x) {
-		return splay(root,x);
+
+		root = splay(root, x);
+		BNode p = binarySearch(root, x);
+		if(p != null) return p;
+		return null;
+
+		}
+
+
+	private BNode binarySearch(BNode root, int x) {
+		if (root == null) {
+			return null;
+		}
+		if (root.getNodeValue() == x) {
+			return root;
+		}
+		if (root.getNodeValue() < x) {
+			root.setVisited(true);
+			return binarySearch(root.getRight(), x);
+		} else {
+			root.setVisited(true);
+			return binarySearch(root.getLeft(), x);
+		}
 	}
-	
 }

@@ -1,4 +1,6 @@
 package algorithm;
+import gui.BSTPane;
+import javafx.scene.layout.Pane;
 import tree.GenericNode;
 import tree.BNode;
 public class PostOrder implements Algorithm {
@@ -18,4 +20,5 @@ public class PostOrder implements Algorithm {
 		 }
 		 System.out.print(node.getNodeValue() + " ");
 	 }
+	public void uiTraverse(BNode node, BSTPane pane){}
 }
