@@ -26,7 +26,7 @@ public class MainApp extends Application {
             e.getMessage();
         }
         primaryStage.show();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This is a data-tree animation created by Ankit Sharma!", ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This is a data-tree visualization", ButtonType.OK);
         alert.getDialogPane().setMinHeight(80);
         alert.show();
 

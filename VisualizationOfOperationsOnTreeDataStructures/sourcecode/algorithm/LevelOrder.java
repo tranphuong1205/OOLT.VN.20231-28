@@ -1,5 +1,7 @@
 package algorithm;
 
+import gui.BSTPane;
+import javafx.scene.layout.Pane;
 import tree.GenericNode;
 import tree.BNode;
 import java.util.LinkedList;
@@ -35,4 +37,5 @@ public void traverse( GenericNode node) {
 		 }
 		 
 	 }
+	 public void uiTraverse(BNode node, BSTPane pane){}
 }

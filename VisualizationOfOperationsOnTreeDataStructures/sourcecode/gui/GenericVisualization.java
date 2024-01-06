@@ -1,5 +1,7 @@
 package gui;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
@@ -12,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import jdk.swing.interop.LightweightFrameWrapper;
 import tree.GenericNode;
 import tree.GenericTree;
@@ -80,13 +83,12 @@ public class GenericVisualization extends Application {
         Button  delete = new Button("Delete");
         Button  search = new Button("Search");
         MenuButton traMenu = new MenuButton("traverse");
-        MenuItem level = new MenuItem("Level_order");
-        MenuItem pre = new MenuItem("Pre_order");
-        MenuItem in = new MenuItem("In_0rder");
-        MenuItem pos = new MenuItem("Post_order");
+        MenuItem level = new MenuItem("BFS");
+        MenuItem pre = new MenuItem("DFS");
 
 
-        traMenu.getItems().addAll(level, pre, in, pos);
+
+        traMenu.getItems().addAll(level, pre);
         addAlgorithm(insertPValue, insertCValue,deleteValue,searchValue,i,d,s,insertCf,insert,deleteCf,delete,searchCf,search,tree, gPane);
 
 
@@ -137,13 +139,12 @@ public class GenericVisualization extends Application {
             d.setVisible(true); });
         deleteCf.setOnAction(dCfE -> {
             int key = Integer.parseInt(deleteValue.getText());
-            if(tree.search(key) == null){
+            /*if(tree.search(key) == null){
                 view.displayTree();
-            }
-            else{
+            }*/
+
                 tree.delete(key);
                 view.displayTree();
-            }
             deleteValue.clear();
             d.setVisible(false);
         });
@@ -166,5 +167,8 @@ public class GenericVisualization extends Application {
             s.setVisible(false);
             view.clearSearch();
         });
+
     }
+
+
 }
