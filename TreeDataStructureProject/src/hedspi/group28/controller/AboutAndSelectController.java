@@ -1,7 +1,6 @@
 package hedspi.group28.controller;
 
 import java.io.IOException;
-
 import hedspi.group28.controller.tree.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,54 +24,48 @@ public class AboutAndSelectController {
         		"Generic tree",
                 "A Binary Search Tree (BST)",
                 "An Adelson-Velskii Landis (AVL)",
-                "Balanced binary tree"
-                
+                "Balanced binary tree"  
         );
-        Select.getSelectionModel().selectFirst();
-        
-        // Set event handler for ComboBox
+              
+        // Set event handler for Select
         Select.setOnAction(e -> {
             String selected = Select.getSelectionModel().getSelectedItem();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hedspi/group28/view/MainScene.fxml"));
             switch (selected) {
-                case "Generic tree":
+                case "Generic tree":             	
                 	loader.setController(new GenController());
-                	//deleteTreeView();
+                	deleteTreeView(loader);                	
                     break;
                 case "A Binary Search Tree (BST)":
-                	loader.setController(new BSTController());
-                	//deleteTreeView();
+                	loader.setController(new BSTController());               	
+                	deleteTreeView(loader);
                     break;
                 case "An Adelson-Velskii Landis (AVL)":
-                	loader.setController(new AVLController());
-                	//deleteTreeView();
+                	loader.setController(new AVLController());               	
+                	deleteTreeView(loader);
                     break;
                 case "Balanced binary tree":
-                	loader.setController(new BSTController());
-                	//deleteTreeView();
+                	loader.setController(new BSTController());              	
+                	deleteTreeView(loader);
                     break;
             }
         });
     }
     
-    public void deleteTreeView() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("hedspi/group28/view/MainScene.fxml"));
+    public void deleteTreeView(FXMLLoader loader) {
+    	Stage stage = (Stage) About.getScene().getWindow();
         try {
-            Parent root = loader.load();
-            Pane treeViewPane = (Pane) root.lookup("TreeView");
-
-            if (treeViewPane != null) {
-                treeViewPane.getChildren().clear();
-            } else {
-                System.out.println("TreeView Pane not found or null");
-            }
+        	Parent root = loader.load();
+        	Scene scene = new Scene(root);
+        	stage.setScene(scene);
+        	stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     
     @FXML
-    private void handleAbout() {
+    private synchronized void handleAbout() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hedspi/group28/view/about.fxml"));
             Parent root = loader.load();

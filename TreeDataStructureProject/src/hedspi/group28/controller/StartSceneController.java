@@ -66,13 +66,15 @@ public class StartSceneController {
     	openMainScene();
     }
     
-    public void openMainScene() 
-    {
-    	try {
-    		Stage currentStage = (Stage) Start.getScene().getWindow();
+    public void openMainScene() {
+        try {
+            Stage currentStage = (Stage) Start.getScene().getWindow();
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+
+            ExitManager.setExitHandler(stage); // Thiết lập xử lý thoát cho cửa sổ mới
+
             stage.show();
             currentStage.close(); // Đóng scene cũ
         } catch (IOException e) {
@@ -128,4 +130,6 @@ public class StartSceneController {
             e.printStackTrace();
         }
     }
+    
+    
 }

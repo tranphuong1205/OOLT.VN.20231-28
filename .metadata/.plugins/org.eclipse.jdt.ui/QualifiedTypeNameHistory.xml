@@ -21,6 +21,19 @@
     <fullyQualifiedTypeName name="javafx.scene.control.ChoiceBox"/>
     <fullyQualifiedTypeName name="javafx.fxml.FXML"/>
     <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
-    <fullyQualifiedTypeName name="javafx.scene.control.ComboBox"/>
+    <fullyQualifiedTypeName name="hedspi.group28.view.SceneUtils"/>
+    <fullyQualifiedTypeName name="hedspi.group28.view.StageManager"/>
+    <fullyQualifiedTypeName name="javafx.stage.Stage"/>
     <fullyQualifiedTypeName name="hedspi.group28.controller.StartSceneController"/>
+    <fullyQualifiedTypeName name="hedspi.group28.view.ExitManager"/>
+    <fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.ComboBox"/>
+    <fullyQualifiedTypeName name="javafx.collections.ObservableList"/>
+    <fullyQualifiedTypeName name="javafx.collections.FXCollections"/>
+    <fullyQualifiedTypeName name="javafx.animation.PauseTransition"/>
+    <fullyQualifiedTypeName name="java.time.Duration"/>
+    <fullyQualifiedTypeName name="javafx.util.Duration"/>
+    <fullyQualifiedTypeName name="javafx.animation.KeyFrame"/>
+    <fullyQualifiedTypeName name="javafx.animation.Timeline"/>
+    <fullyQualifiedTypeName name="javafx.application.Platform"/>
 </qualifiedTypeNameHistroy>

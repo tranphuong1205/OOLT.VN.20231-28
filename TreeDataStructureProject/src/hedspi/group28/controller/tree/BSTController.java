@@ -1,21 +1,15 @@
 package hedspi.group28.controller.tree;
 
 import javafx.scene.paint.Color;
-
-import java.io.IOException;
-
 import hedspi.group28.model.tree.BNode;
 import hedspi.group28.model.tree.BSTree;
 import hedspi.group28.view.NodeView;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
+
 public class BSTController{
 	
 	@FXML private Button Insert;
@@ -42,7 +36,6 @@ public class BSTController{
 	@FXML private Button About;
 
 	public void initialize() {
-		About.setOnAction(e -> handleAbout());
 		//Select.setOnAction(e -> handleSselectDataSctruct());
 		
 		Insert.setOnAction(e -> handleInsert());
@@ -186,15 +179,4 @@ public class BSTController{
         }
     }  
     
-    private void handleAbout() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/hedspi/group28/view/about.fxml"));
-            Parent root = loader.load();
-            Stage aboutStage = new Stage();
-            aboutStage.setScene(new Scene(root));
-            aboutStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    } 
 }

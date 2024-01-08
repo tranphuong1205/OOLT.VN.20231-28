@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 import hedspi.group28.model.tree.BNode;
 import hedspi.group28.model.tree.BalanceTree;
 import hedspi.group28.view.NodeView;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -131,9 +132,13 @@ public class BBSTController{
     }
     
     public void drawTree(int refNode) {
-    	TreeView.getChildren().clear();
+    	Platform.runLater(() -> {
+    		TreeView.getChildren().clear();
+    	});
 		int maxdepth = treeDepth(tree.getRoot());
+		Platform.runLater(() -> {
     	drawTree(tree.getRoot(), TreeView, 400, 50, 1, refNode, maxdepth);
+		});
     }
      
     public void drawTree(BNode node, Pane pane, double x, double y, int level, int refNode, int maxdepth) {

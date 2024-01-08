@@ -5,22 +5,22 @@ import hedspi.group28.model.tree.GenericNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
- public class LevelOrder implements Algorithm{
+public class LevelOrder implements Algorithm{
 	 public void traverse(BNode root) {
-		 Queue<BNode> nodeList = new LinkedList<BNode>();
-			nodeList.add(root);
-			while(!nodeList.isEmpty()) {
-				BNode temp = nodeList.poll();
-				System.out.print(temp.getNodeValue()+ " -> ");
-				if(temp.getLeft() != null) {
-					nodeList.add(temp.getLeft());
-				}
-				if(temp.getRight() != null) {
-					nodeList.add(temp.getRight());
-				}
+		Queue<BNode> nodeList = new LinkedList<BNode>();
+		nodeList.add(root);
+		while(!nodeList.isEmpty()) {
+			BNode temp = nodeList.poll();
+			System.out.print(temp.getNodeValue()+ " -> ");
+			if(temp.getLeft() != null) {
+				nodeList.add(temp.getLeft());
 			}
+			if(temp.getRight() != null) {
+				nodeList.add(temp.getRight());
+			}
+		}
 	 }
-public void traverse( GenericNode node) {
+public void traverse(GenericNode node) {
 		 if(node == null) return ;
 		 Queue<GenericNode> queue = new LinkedList<GenericNode>();
 		 queue.offer(node);

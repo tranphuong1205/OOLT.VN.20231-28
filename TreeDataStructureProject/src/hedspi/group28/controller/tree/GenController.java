@@ -1,16 +1,23 @@
 package hedspi.group28.controller.tree;
 
 import javafx.scene.paint.Color;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 import hedspi.group28.model.tree.GenericNode;
 import hedspi.group28.model.tree.GenericTree;
 import hedspi.group28.view.NodeView;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Button;
-
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
+import javafx.util.Duration;
+
 public class GenController {
 	
 	@FXML private Button Insert;
@@ -20,7 +27,7 @@ public class GenController {
 	@FXML private Button Search;
 
 	@FXML private Pane TreeView;
-	
+	@FXML private ComboBox<String> Algorithms;
 	@FXML private TextField t10;
 	@FXML private TextField t20;
 	@FXML private Button b30;
@@ -43,7 +50,30 @@ public class GenController {
 		b21.setOnAction(e -> handleb21());	// button removeOK
 		b32.setOnAction(e -> handleb32());	// button updateOK
 		b24.setOnAction(e -> handleb24());	// button searchOK
+		
+		Algorithms.getItems().addAll(
+        		"InOrder",
+        		"PreOrder",
+                "PostOrder"
+        );
 
+		// Set event handler for ComboBox
+	    Algorithms.setOnAction(e -> {
+	        String selected = Algorithms.getSelectionModel().getSelectedItem();
+	        //Algorithms.setValue(null);
+	        Algorithms.setVisible(false); 
+	        switch (selected) {
+	            case "InOrder":           	
+	            	InOrder(tree.getRoot());
+	                break;
+	            case "PreOrder":
+	            	PreOrder(tree.getRoot());
+	                break;
+	            case "PostOrder":        	
+	            	PostOrder(tree.getRoot());
+	                break;
+	        }
+	    });
     }
 	
 	GenericTree tree = new GenericTree();
@@ -117,10 +147,9 @@ public class GenController {
     
     @FXML
     public void handleTraverse() {			// hien thi button 
-      
-        
+    	Algorithms.setVisible(true);       
     }
-    
+
     @FXML
     public void handleSearch() {			// hien thi button 
         t14.setVisible(true);
@@ -151,7 +180,6 @@ public class GenController {
             int numChildren = countChildren(node.getLeftMostChild());
             double xStart = x - (numChildren - 1) * 50; // Điều chỉnh khoảng cách giữa các node con
             double yChild = y + vGap;
-
             NodeView nodeView = new NodeView(node.getNodeValue(), x, y);
             if(node.getNodeValue() == refNode)            	
         		nodeView.setColor(Color.RED);   
@@ -162,7 +190,6 @@ public class GenController {
                 GenericNode child = node.getLeftMostChild();
                 for (int i = 0; i < numChildren; i++) {
                     double xChild = xStart + i * 100; // Điều chỉnh khoảng cách
-
                     Line line = new Line(x, y + radius, xChild, yChild - radius);
                     treePane.getChildren().add(line);
                     line.toBack();
@@ -180,5 +207,67 @@ public class GenController {
             node = node.getRightSibling();
         }
         return count;
-    }	    
+    }	
+    
+    public void PostOrder(GenericNode node) {
+        if (node == null) return;
+        Queue<GenericNode> queue = new LinkedList<>();
+        queue.offer(node);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+            GenericNode p = queue.poll();
+            if (p != null) {
+                drawTree(p.getNodeValue());
+                GenericNode q = p.getLeftMostChild();
+                while (q != null) {
+                    queue.offer(q);
+                    q = q.getRightSibling();
+                }
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+        //Algorithms.setValue(null);
+    }
+    
+    public void PreOrder(GenericNode node) {
+        if (node == null) return;
+        Timeline timeline = new Timeline();
+        PreOrderNode(node, timeline);
+        //Algorithms.setValue(null);
+    }
+
+    private void PreOrderNode(GenericNode node, Timeline timeline) {
+        if (node != null) {
+            drawTree(node.getNodeValue());
+            GenericNode p = node.getLeftMostChild();
+            while (p != null) {
+                final GenericNode currentNode = p;
+                timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(2), event -> {
+                	PreOrderNode(currentNode, timeline);
+                }));
+                p = p.getRightSibling();
+            }
+        }
+        timeline.play();
+    }
+    
+    
+    
+    public void InOrder(GenericNode node) {
+        if (node == null) return;
+        InOrderNode(node);
+        Algorithms.setValue(null);
+    }
+
+    private void InOrderNode(GenericNode node) {
+        if (node == null) return;
+        GenericNode p = node.getLeftMostChild();
+        while (p != null) {
+        	InOrderNode(p);
+            p = p.getRightSibling();
+        }
+        drawTree(node.getNodeValue());
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> {}));
+        timeline.play();
+    }
 }

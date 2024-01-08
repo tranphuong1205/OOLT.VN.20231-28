@@ -12,7 +12,7 @@ public class PostOrder implements Algorithm {
 		System.out.print(root.getNodeValue() + "-> ");
 	}
 	public void traverse( GenericNode node) {
-		 if(node == null) return ;
+		 if(node == null) return;
 		 GenericNode p = node.getLeftMostChild();
 		 while(p != null) {
 			 traverse(p);
