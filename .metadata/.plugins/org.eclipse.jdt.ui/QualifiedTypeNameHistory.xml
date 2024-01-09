@@ -19,7 +19,6 @@
     <fullyQualifiedTypeName name="javafx.scene.text.Text"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
     <fullyQualifiedTypeName name="javafx.scene.control.ChoiceBox"/>
-    <fullyQualifiedTypeName name="javafx.fxml.FXML"/>
     <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
     <fullyQualifiedTypeName name="hedspi.group28.view.SceneUtils"/>
     <fullyQualifiedTypeName name="hedspi.group28.view.StageManager"/>
@@ -36,4 +35,6 @@
     <fullyQualifiedTypeName name="javafx.animation.KeyFrame"/>
     <fullyQualifiedTypeName name="javafx.animation.Timeline"/>
     <fullyQualifiedTypeName name="javafx.application.Platform"/>
+    <fullyQualifiedTypeName name="javafx.scene.image.ImageView"/>
+    <fullyQualifiedTypeName name="javafx.fxml.FXML"/>
 </qualifiedTypeNameHistroy>

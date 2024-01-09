@@ -18,8 +18,8 @@
             <Image url="@../resources/background.jpg" />
          </image>
       </ImageView>
-   <fx:include source="ProgressBar.fxml" />
    <fx:include source="AboutAndSelectView.fxml" />
+   <fx:include source="ProgressBar.fxml" />
       <Pane fx:id="TreeView" layoutX="239.0" layoutY="22.0" prefHeight="488.0" prefWidth="679.0" />
       <GridPane layoutX="25.0" layoutY="479.0">
         <columnConstraints>

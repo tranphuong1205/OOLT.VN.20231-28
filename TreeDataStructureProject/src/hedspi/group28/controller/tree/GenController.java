@@ -20,12 +20,13 @@ import javafx.util.Duration;
 
 public class GenController {
 	
+	//private TreeViewHistory treeViewHistory;
+
 	@FXML private Button Insert;
 	@FXML private Button Remove;
 	@FXML private Button Update;
 	@FXML private Button Traverse;
 	@FXML private Button Search;
-
 	@FXML private Pane TreeView;
 	@FXML private ComboBox<String> Algorithms;
 	@FXML private TextField t10;
@@ -38,7 +39,7 @@ public class GenController {
 	@FXML private Button b32;
 	@FXML private TextField t14;
 	@FXML private Button b24;
-
+	
 	public void initialize() {
 		Insert.setOnAction(e -> handleInsert());
 		Remove.setOnAction(e -> handleRemove());
@@ -54,7 +55,8 @@ public class GenController {
 		Algorithms.getItems().addAll(
         		"InOrder",
         		"PreOrder",
-                "PostOrder"
+                "PostOrder",
+        		"LevelOrder"
         );
 
 		// Set event handler for ComboBox
@@ -71,6 +73,9 @@ public class GenController {
 	                break;
 	            case "PostOrder":        	
 	            	PostOrder(tree.getRoot());
+	                break;
+	            case "LevelOrder":        	
+	            	LevelOrder(tree.getRoot());
 	                break;
 	        }
 	    });
@@ -145,6 +150,8 @@ public class GenController {
     	}
     }
     
+    // Duyệt cây
+    
     @FXML
     public void handleTraverse() {			// hien thi button 
     	Algorithms.setVisible(true);       
@@ -171,7 +178,22 @@ public class GenController {
     	TreeView.getChildren().clear();
     	drawTree(tree.getRoot(), TreeView, 400, 50, 0, refNode);
     }
+    // Hide Button
+    private void HideButton() {
+    	Algorithms.setVisible(false); 
+    	t10.setVisible(false); 
+    	t20.setVisible(false); 
+    	b30.setVisible(false); 
+    	t11.setVisible(false); 
+    	b21.setVisible(false); 
+    	t12.setVisible(false); 
+    	t22.setVisible(false); 
+    	b32.setVisible(false); 
+    	t14.setVisible(false); 
+    	b24.setVisible(false); 
+    }
     
+    // Draw Tree
     private double radius = 15;
     private double vGap = 50;
 
@@ -209,7 +231,7 @@ public class GenController {
         return count;
     }	
     
-    public void PostOrder(GenericNode node) {
+    private void PostOrder(GenericNode node) {
         if (node == null) return;
         Queue<GenericNode> queue = new LinkedList<>();
         queue.offer(node);
@@ -251,12 +273,10 @@ public class GenController {
         timeline.play();
     }
     
-    
-    
     public void InOrder(GenericNode node) {
         if (node == null) return;
         InOrderNode(node);
-        Algorithms.setValue(null);
+        //Algorithms.setValue(null);
     }
 
     private void InOrderNode(GenericNode node) {
@@ -270,4 +290,27 @@ public class GenController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), e -> {}));
         timeline.play();
     }
+
+    public void LevelOrder(GenericNode node) {
+        if (node == null) return;
+
+        Queue<GenericNode> queue = new LinkedList<>();
+        queue.offer(node);
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            GenericNode p = queue.poll();
+            if (p != null) {
+                drawTree(p.getNodeValue());
+                System.out.print(p.getNodeValue() + " ");
+                GenericNode q = p.getLeftMostChild();
+                while (q != null) {
+                    queue.offer(q);
+                    q = q.getRightSibling();
+                }
+            }
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+    
 }
