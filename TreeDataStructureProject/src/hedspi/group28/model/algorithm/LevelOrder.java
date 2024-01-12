@@ -22,20 +22,21 @@ public class LevelOrder implements Algorithm{
 			}
 		}
 	 }
-public void traverse(GenericNode node) {
-		 if(node == null) return ;
-		 Queue<GenericNode> queue = new LinkedList<GenericNode>();
-		 queue.offer(node);
-		 while(!queue.isEmpty()) {
-			 GenericNode p = queue.poll();
-			 traversalList.add(node.getNodeValue());
-			 GenericNode q = p.getLeftMostChild();
-			 while( q != null) {
-				 queue.offer(q);
-				 q = q.getRightSibling();
-			 }
-		 }	 
-	 }
+	 
+	 public void traverse(GenericNode node) {
+		    if (node == null) return;
+		    Queue<GenericNode> queue = new LinkedList<>();
+		    queue.offer(node);
+		    while (!queue.isEmpty()) {
+		        GenericNode p = queue.poll();
+		        traversalList.add(p.getNodeValue());
+		        GenericNode q = p.getLeftMostChild();
+		        while (q != null) {
+		            queue.offer(q);
+		            q = q.getRightSibling();
+		        }
+		    }
+		}
 
 	public LinkedList<Integer> getTraversalList() {
 	    return traversalList;

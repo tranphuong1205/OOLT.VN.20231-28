@@ -5,7 +5,6 @@ import hedspi.group28.model.tree.GenericNode;
 public interface Algorithm {
 	public void traverse( BNode node);
 	public void traverse( GenericNode node);
-	
-	}
+}
 	
 	

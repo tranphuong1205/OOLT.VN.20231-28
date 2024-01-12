@@ -32,6 +32,8 @@ public class AVLController {
 	@FXML private ImageView PauseButton;
 	@FXML private ImageView NextButton;
 	@FXML private ImageView PrevButton;
+	@FXML private ImageView skipButton;
+	@FXML private ImageView resetButton;
 	@FXML private Pane TreeView;
 	@FXML private ComboBox<String> Algorithms;
 	@FXML private TextField t10;
@@ -97,10 +99,8 @@ public class AVLController {
 	    PauseButton.setOnMouseClicked(event -> {	 
 		    addClickAnimation(PauseButton);
 		    if(drawThread != null && isDrawThreadRunning == true) {
-		    	System.out.print("pause");
 		    	if(drawThread.isAlive())pauseThread();
 		    } else if(drawThread != null) {
-		    	System.out.print("play");
 		    	if(drawThread.isAlive()) resumeThread();
 		    	else traverse();
 		    }
@@ -121,6 +121,17 @@ public class AVLController {
 		    	currentIndex++;	
 		    	drawTree(traversalList.get(currentIndex));
 	    	}
+	    });
+	    
+	    skipButton.setOnMouseClicked(event -> {
+	    	addClickAnimation(skipButton);
+		    currentIndex=traversalList.size()-1;	
+	    });
+	    
+	    resetButton.setOnMouseClicked(event -> {
+	    	addClickAnimation(resetButton);
+		    currentIndex=0;	
+		    if(!drawThread.isAlive()) drawTree(traversalList.get(currentIndex));
 	    });
     }
 	

@@ -9,23 +9,22 @@ public class PostOrder implements Algorithm {
     private LinkedList<Integer> traversalList = new LinkedList<>();
 
     public void traverse(GenericNode node) {
-        if (node == null) return;
-        traversalList.add(node.getNodeValue());
-        GenericNode p = node.getLeftMostChild();   
+        if (node == null) return;       
+        GenericNode p = node.getLeftMostChild();      
         while (p != null) {
-            traverse(p);  
+            traverse(p);
             p = p.getRightSibling();
         }
+        traversalList.add(node.getNodeValue());
     }
 
     public void traverse(BNode root) {
         if (root == null) {
             return;
         }
-        traversalList.add(root.getNodeValue());
         traverse(root.getLeft());
         traverse(root.getRight());
-        
+        traversalList.add(root.getNodeValue());
     }
 
     public LinkedList<Integer> getTraversalList() {

@@ -15,6 +15,7 @@ public class PreOrder implements Algorithm {
 		traverse(root.getLeft());
 		traverse(root.getRight());
 	}
+	
 	public void traverse( GenericNode node) {
 		 if(node == null) return ;
 		 traversalList.add(node.getNodeValue());
