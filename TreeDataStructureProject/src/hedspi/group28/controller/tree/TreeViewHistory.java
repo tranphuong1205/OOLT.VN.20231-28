@@ -1,35 +1,61 @@
 package hedspi.group28.controller.tree;
 
 import javafx.scene.layout.Pane;
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import javafx.scene.Node;
 
 public class TreeViewHistory {
-    private Stack<Pane> history;
-    private Stack<Pane> forwardHistory;
+    private LinkedList<PaneWithChildren> history;
+    private int currentIndex;
 
     public TreeViewHistory() {
-        history = new Stack<>();
-        forwardHistory = new Stack<>();
+        history = new LinkedList<>();
+        currentIndex = -1;
     }
 
     public void addToHistory(Pane pane) {
-        history.push(pane);
-        forwardHistory.clear(); // Clear forward history when a new pane is added
+        PaneWithChildren paneWithChildren = new PaneWithChildren(pane);
+        history.addLast(paneWithChildren);
+        currentIndex = history.size() - 1;
     }
 
     public Pane navigateBack() {
-        if (!history.isEmpty()) {
-            forwardHistory.push(history.peek());
-            return history.pop();
+        if (currentIndex > 0) {
+            currentIndex--;
+            return history.get(currentIndex).getPane();
         }
         return null;
     }
 
     public Pane navigateForward() {
-        if (!forwardHistory.isEmpty()) {
-            history.push(forwardHistory.peek());
-            return forwardHistory.pop();
+        if (currentIndex < history.size() - 1) {
+            currentIndex++;
+            return history.get(currentIndex).getPane();
         }
         return null;
+    }
+
+    public void clearHistory() {
+        history.clear();
+        currentIndex = -1;
+    }
+
+    private static class PaneWithChildren {
+        private final Pane pane;
+        private final ArrayList<Node> children;
+
+        public PaneWithChildren(Pane pane) {
+            this.pane = pane;
+            this.children = new ArrayList<>(pane.getChildren());
+        }
+
+        public Pane getPane() {
+            return pane;
+        }
+
+        public ArrayList<Node> getChildren() {
+            return children;
+        }
     }
 }

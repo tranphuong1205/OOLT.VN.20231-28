@@ -1,23 +1,34 @@
 package hedspi.group28.model.algorithm;
 
+import java.util.LinkedList;
+
 import hedspi.group28.model.tree.BNode;
 import hedspi.group28.model.tree.GenericNode;
 
 public class PostOrder implements Algorithm {
-	public void traverse(BNode root) {
-		if(root == null) {
-			return;}
-		traverse(root.getLeft());
-		traverse(root.getRight());
-		System.out.print(root.getNodeValue() + "-> ");
-	}
-	public void traverse( GenericNode node) {
-		 if(node == null) return;
-		 GenericNode p = node.getLeftMostChild();
-		 while(p != null) {
-			 traverse(p);
-			 p = p.getRightSibling();
-		 }
-		 System.out.print(node.getNodeValue() + " ");
-	 }
+    private LinkedList<Integer> traversalList = new LinkedList<>();
+
+    public void traverse(GenericNode node) {
+        if (node == null) return;
+        traversalList.add(node.getNodeValue());
+        GenericNode p = node.getLeftMostChild();   
+        while (p != null) {
+            traverse(p);  
+            p = p.getRightSibling();
+        }
+    }
+
+    public void traverse(BNode root) {
+        if (root == null) {
+            return;
+        }
+        traversalList.add(root.getNodeValue());
+        traverse(root.getLeft());
+        traverse(root.getRight());
+        
+    }
+
+    public LinkedList<Integer> getTraversalList() {
+        return traversalList;
+    }
 }

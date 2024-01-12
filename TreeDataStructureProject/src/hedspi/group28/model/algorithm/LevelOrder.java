@@ -6,12 +6,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class LevelOrder implements Algorithm{
+	private LinkedList<Integer> traversalList = new LinkedList<>();
+	
 	 public void traverse(BNode root) {
 		Queue<BNode> nodeList = new LinkedList<BNode>();
 		nodeList.add(root);
 		while(!nodeList.isEmpty()) {
 			BNode temp = nodeList.poll();
-			System.out.print(temp.getNodeValue()+ " -> ");
+			traversalList.add(temp.getNodeValue());
 			if(temp.getLeft() != null) {
 				nodeList.add(temp.getLeft());
 			}
@@ -26,13 +28,16 @@ public void traverse(GenericNode node) {
 		 queue.offer(node);
 		 while(!queue.isEmpty()) {
 			 GenericNode p = queue.poll();
-			 System.out.print(p.getNodeValue() + " ");
+			 traversalList.add(node.getNodeValue());
 			 GenericNode q = p.getLeftMostChild();
 			 while( q != null) {
 				 queue.offer(q);
 				 q = q.getRightSibling();
 			 }
-		 }
-		 
+		 }	 
 	 }
+
+	public LinkedList<Integer> getTraversalList() {
+	    return traversalList;
+	}
 }

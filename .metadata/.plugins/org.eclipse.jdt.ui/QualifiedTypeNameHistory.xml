@@ -13,7 +13,6 @@
     <fullyQualifiedTypeName name="tree.GenericTree"/>
     <fullyQualifiedTypeName name="javafx.scene.layout.Pane"/>
     <fullyQualifiedTypeName name="hedspi.group28.test.sceneBuilder.MyApplication"/>
-    <fullyQualifiedTypeName name="javafx.scene.control.TreeView"/>
     <fullyQualifiedTypeName name="hedspi.group28.model.tree.GenericNode"/>
     <fullyQualifiedTypeName name="javafx.scene.shape.Circle"/>
     <fullyQualifiedTypeName name="javafx.scene.text.Text"/>
@@ -37,4 +36,7 @@
     <fullyQualifiedTypeName name="javafx.application.Platform"/>
     <fullyQualifiedTypeName name="javafx.scene.image.ImageView"/>
     <fullyQualifiedTypeName name="javafx.fxml.FXML"/>
+    <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.TreeView"/>
 </qualifiedTypeNameHistroy>

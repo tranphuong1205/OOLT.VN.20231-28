@@ -8,14 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class AboutAndSelectController {
     
     @FXML private Button About;
     @FXML private ComboBox<String> Select;
-    @FXML private Pane TreeView;
+    //@FXML private Pane TreeView;
     
     @FXML
     private void initialize() {
@@ -49,7 +48,7 @@ public class AboutAndSelectController {
                 	deleteTreeView(loader);
                     break;
             }
-        });
+        });                        
     }
     
     public void deleteTreeView(FXMLLoader loader) {
