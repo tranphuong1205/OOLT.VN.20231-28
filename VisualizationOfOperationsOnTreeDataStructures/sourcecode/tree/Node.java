@@ -2,8 +2,8 @@ package tree;
 
 public class Node {
 	private int value;
-	private boolean isVisited ;
-
+	private boolean isVisited;
+	private Node back;
 	
 	public Node(int x) {
 		this.value = x;
@@ -23,5 +23,19 @@ public class Node {
 
 	public void setValue(int value) {
 		this.value = value;
+	}
+
+	public Node getBack() {
+		return back;
+	}
+	
+	public void setBack(Node back) {
+		this.back = back;
+	}
+	
+	public void updateBack(Node parent) {
+		if (parent != null) {
+		  back = parent;
+		}
 	}
 }
